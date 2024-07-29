@@ -1,8 +1,5 @@
 const Model = ({ closePopup, handleImageSelect }) => {
     return (
-
-
-
         <div className="fixed inset-0 flex items-center bg-black bg-opacity-50 z-[999999]">
             <div className=" bg-white w-[600px] flex flex-col  items-start  h-[700px] mx-auto rounded  p-4 ">
                 <div className="flex items-center justify-between w-full py-2">

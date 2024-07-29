@@ -48,14 +48,12 @@ const Grid = () => {
         const newColumnId = `variant${newVariantNumber}`;
         const newColumn = { id: newColumnId, name: `Variant ${newVariantNumber}`, type: 'image' };
 
-        // Update columns
         const updatedColumns = [...columns, newColumn];
         setColumns(updatedColumns);
 
-        // Add new column with empty value for each row
         const updatedRows = rows.map(row => ({
             ...row,
-            [newColumnId]: '' // Initialize new column with empty value
+            [newColumnId]: '' 
         }));
         setRows(updatedRows);
         toast("Column added", {
@@ -66,12 +64,11 @@ const Grid = () => {
 
     const addRow = () => {
         const newRowId = rows.length + 1;
-        const newRow = { id: newRowId, productFilter: [] }; // Initialize with empty productFilter
+        const newRow = { id: newRowId, productFilter: [] };
 
-        // Initialize missing columns with empty values
         const updatedRow = columns.reduce((acc, column) => {
             if (!acc.hasOwnProperty(column.id)) {
-                acc[column.id] = ''; // Initialize with empty value
+                acc[column.id] = ''; 
             }
             return acc;
         }, newRow);
@@ -83,53 +80,7 @@ const Grid = () => {
         })
     };
 
-    const handleInputChange = (rowId, columnId, value) => {
-        const updatedRows = rows.map(row => {
-            if (row.id === rowId) {
-                return { ...row, [columnId]: value };
-            }
-            return row;
-        });
-        setRows(updatedRows);
-    };
 
-
-    const RenderProductFilter = ({ value }) => {
-        return (
-            <div className="w-full h-full">
-                {
-                    value.length === 0 ? (
-                        <div className="relative  w-full h-full  flex justify-center items-center">
-                            <div
-                                className=" border border-gray-300 shadow-md w-full h-[200px] flex justify-center items-center "
-
-                            >
-                                <button className="bg-white px-2 py-1 text-xl "
-                                // onClick={openPopup}
-                                > + add design</button>
-                            </div>
-                        </div>
-                    ) : (
-                        <div className="relative  w-full h-full  flex justify-center items-center">
-                            <div
-                                className=" border border-gray-300 shadow-md w-full h-[200px] flex items-center justify-evenly  "
-
-                            >{
-                                    value.map((prod) => (
-
-                                        <p className="bg-white px-4 py-1 text-lg">{prod}</p>
-
-                                    ))
-                                }
-
-                            </div>
-                        </div>
-                    )
-                }
-
-            </div>
-        );
-    };
 
 
     const handleDeleteRow = (rowId) => {
@@ -188,16 +139,13 @@ const Grid = () => {
     };
 
     const handleDeleteColumn = (columnId) => {
-        // Remove the column from the columns array
         const updatedColumns = columns.filter((column) => column.id !== columnId);
 
-        // Remove the column data from each row
         const updatedRows = rows.map((row) => {
             const { [columnId]: removedColumn, ...rest } = row;
             return rest;
         });
 
-        // Update the state
         setColumns(updatedColumns);
         setRows(updatedRows);
     };
@@ -289,7 +237,7 @@ const Grid = () => {
 
                                                             >
                                                                 <button className="bg-white px-2 py-1 text-xl "
-                                                                    onClick={openPopup}
+                                                                    // onClick={openPopup}
                                                                 > + add design</button>
                                                             </div>
                                                         </div>

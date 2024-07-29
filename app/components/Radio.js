@@ -7,7 +7,6 @@ const Radio = () => {
                     name="toggle"
                     id="toggle"
                     className=" toggle-radio p-2 absolute right-0 block w-8 h-8 rounded-full bg-white border-4 appearance-none cursor-pointer"
-                    // className=" absolute block w-8 h-8 rounded-full bg-white border-4 appearance-none cursor-pointer"
                     defaultChecked
                 />
                 <label
